@@ -229,12 +229,20 @@ body::before { content:''; position:fixed; inset:0; background:radial-gradient(e
     <div class="page-title">➕ บันทึกรายการ</div>
     <div class="form-card">
       <div class="form-section-title">📷 รูปภาพ (บีบอัดอัตโนมัติ)</div>
-      <div class="photo-upload" onclick="document.getElementById('photo-input').click()">
-        <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotosWithDrive(event)" style="position:absolute;opacity:0;width:1px;height:1px">
-        <div class="photo-icon">📸</div>
-        <div class="photo-text">แตะเพื่อถ่ายรูป หรือเลือกจากแกลเลอรี</div>
-        <div class="photo-sub">✅ บีบอัดรูปอัตโนมัติ — อัปโหลดได้ทุกขนาด</div>
+      <!-- hidden inputs -->
+      <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotosWithDrive(event)" style="position:absolute;opacity:0;width:1px;height:1px">
+      <input type="file" id="photo-camera" accept="image/*" capture="environment" onchange="handlePhotosWithDrive(event)" style="position:absolute;opacity:0;width:1px;height:1px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div class="photo-upload" onclick="document.getElementById('photo-camera').click()" style="padding:20px 10px">
+          <div class="photo-icon">📷</div>
+          <div class="photo-text" style="font-size:13px">ถ่ายรูป</div>
+        </div>
+        <div class="photo-upload" onclick="document.getElementById('photo-input').click()" style="padding:20px 10px">
+          <div class="photo-icon">🖼️</div>
+          <div class="photo-text" style="font-size:13px">เลือกจากแกลเลอรี</div>
+        </div>
       </div>
+      <div class="photo-sub" style="text-align:center;margin-bottom:6px">✅ บีบอัดรูปอัตโนมัติ — อัปโหลดได้ทุกขนาด</div>
       <div class="photo-preview" id="photo-preview"></div>
     </div>
 
